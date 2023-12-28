@@ -1,0 +1,54 @@
+local M = {}
+
+M.regex = {}
+
+local function getOrDefault(conf, key, default)
+    local value = vim.tbl_get(conf, key)
+    if value == nil then
+        return default
+    else
+        return value
+    end
+end
+
+local function buildRegex(conf)
+    local tab = getOrDefault(conf, 'tab', '    ')
+    local startTab = getOrDefault(conf, 'startTab', '^' .. tab)
+    local visibility = getOrDefault(conf, 'visibility', startTab .. '\\(public\\|protected\\|private\\|\\)\\s\\{1}')
+    local static = getOrDefault(conf, 'static', '\\(static\\s\\|\\)')
+    local constant = getOrDefault(conf, 'constant', visibility .. 'const ')
+    local property = getOrDefault(conf, 'property', visibility .. static .. '\\(?*\\w\\+\\s\\|\\)\\$')
+    local method = getOrDefault(conf, 'method', visibility .. static .. 'function')
+    local construct = getOrDefault(conf, 'construct', method .. ' __construct(')
+    local methodEnd = getOrDefault(conf, 'methodEnd', startTab .. '}')
+    local comment = getOrDefault(conf, 'comment', startTab .. '\\/')
+    local commentMiddle = getOrDefault(conf, 'commentMiddle', startTab .. '\\*')
+    local commentEnd = getOrDefault(conf, 'commentEnd', startTab .. '\\s\\*')
+    local any = getOrDefault(conf, 'any', startTab .. '[p}]\\{1}')
+    local variable = getOrDefault(conf, 'variable', '\\(' .. tab .. '\\)\\+\\$\\w\\+\\s\\{1}=\\s\\{1}')
+    local object = getOrDefault(conf, 'object', '^\\(final class\\|abstract class\\|class\\|interface\\|trait\\|enum\\)\\s\\{1}')
+
+    return {
+         tab = tab,
+         startTab = startTab,
+         visibility = visibility,
+         static = static,
+         constant = constant,
+         property = property,
+         method = method,
+         construct = construct,
+         methodEnd = methodEnd,
+         comment = comment,
+         commentMiddle = commentMiddle,
+         commentEnd = commentEnd,
+         any = any,
+         variable = variable,
+         object = object
+    }
+end
+
+function M.setup(conf)
+    M.regex = buildRegex(getOrDefault(conf, 'regex', {}))
+end
+
+return M
