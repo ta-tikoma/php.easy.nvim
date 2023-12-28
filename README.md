@@ -49,3 +49,36 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
 | `-ii`          | `PHPEasyInitInterface`     | **I**nitialize **i**nterface in current file |
 | `-it`          | `PHPEasyInitTrait`         | **I**nitialize **t**rait in current file |
 | `-ie`          | `PHPEasyInitEnum`          | **I**nitialize **e**num in current file |
+
+## Examples
+
+### Init
+
+#### Init trait `-it`
+![init trait](https://raw.githubusercontent.com/ta-tikoma/php.easy.vim/with-examples/example/init/trait.gif)
+
+#### Init interface `-ii`
+![init interface](https://raw.githubusercontent.com/ta-tikoma/php.easy.vim/with-examples/example/init/interface.gif)
+
+#### Init abstract class `-iac`
+![init abstract class](https://raw.githubusercontent.com/ta-tikoma/php.easy.vim/with-examples/example/init/abstract-class.gif)
+
+#### Init class `-ic`
+![init class](https://raw.githubusercontent.com/ta-tikoma/php.easy.vim/with-examples/example/init/class.gif)
+
+### Add doc block `-b`
+
+#### Class
+![doc class](https://raw.githubusercontent.com/ta-tikoma/php.easy.vim/with-examples/example/doc/class.gif)
+
+#### Constant
+![doc constant](https://raw.githubusercontent.com/ta-tikoma/php.easy.vim/with-examples/example/doc/constant.gif)
+
+#### Property
+![doc property](https://raw.githubusercontent.com/ta-tikoma/php.easy.vim/with-examples/example/doc/property.gif)
+
+#### Method
+![doc method](https://raw.githubusercontent.com/ta-tikoma/php.easy.vim/with-examples/example/doc/method.gif)
+
+#### Variable
+![doc variable](https://raw.githubusercontent.com/ta-tikoma/php.easy.vim/with-examples/example/doc/variable.gif)
