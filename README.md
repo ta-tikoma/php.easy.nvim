@@ -1,10 +1,10 @@
-# Php Easy Vim
+# Php Easy NVim
 
 A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
 
-# Install
+## Install
 
-## Lazy
+### With [lazy.nvim](https://github.com/folke/lazy.nvim/): 
 ```lua
     {
         'ta-tikoma/php.easy.nvim',
@@ -27,6 +27,8 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
         }
     },
 ```
+
+## Features
 
 | Example Key Binding | Function  | Description |
 | --- | --- | --- |
