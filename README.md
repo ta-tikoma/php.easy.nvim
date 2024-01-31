@@ -50,6 +50,37 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
 | `-it`          | `PHPEasyInitTrait`         | **I**nitialize **t**rait in current file |
 | `-ie`          | `PHPEasyInitEnum`          | **I**nitialize **e**num in current file |
 
+## Configuration
+
+```lua
+{
+    regex = { -- regex for parse php file
+        tab = '    ',
+        startTab = '^' .. tab,
+        visibility = startTab .. '\\(public\\|protected\\|private\\|\\)\\s\\{1}',
+        static = '\\(static\\s\\|\\)',
+        constant = visibility .. 'const ',
+        property = visibility .. static .. '\\(?*\\w\\+\\s\\|\\)\\$',
+        method = visibility .. static .. 'function',
+        construct = method .. ' __construct(',
+        methodEnd = startTab .. '}',
+        comment = startTab .. '\\/',
+        commentMiddle = startTab .. '\\*',
+        commentEnd = startTab .. '\\s\\*',
+        any = startTab .. '[p}]\\{1}',
+        variable = '\\(' .. tab .. '\\)\\+\\$\\w\\+\\s\\{1}=\\s\\{1}',
+        object = '^\\(final class\\|abstract class\\|class\\|interface\\|trait\\|enum\\)\\s\\{1}',
+    },
+    onSave = { -- on save php file action
+        removeUnusedUses = true -- remove unused uses (then use lsp: intelephense)
+    },
+    onAppend = { -- on append entity
+        putTemplate = true -- put default template (like 'private const = ;' for constant)
+    }
+}
+
+```
+
 ## Examples
 
 ### Init
