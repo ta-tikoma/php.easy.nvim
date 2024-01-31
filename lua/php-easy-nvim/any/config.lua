@@ -51,8 +51,12 @@ end
 function M.setup(conf)
     M.regex = buildRegex(getOrDefault(conf, 'regex', {}))
 
-    M.onAppend = vim.tbl_extend('force', {putTemplate = true}, conf.onAppend or {})
-    vim.print(M.onAppend)
+    M.onAppend = {putTemplate = {
+        constant = 'private const ;',
+        method = 'private function \n' .. M.regex.tab .. '{\n' .. M.regex.tab .. '\n' .. M.regex.tab .. '}',
+        property = 'private $;'
+    }}
+    M.onAppend = vim.tbl_extend('force', M.onAppend, conf.onAppend or M.onAppend)
 end
 
 return M
