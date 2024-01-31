@@ -1,6 +1,7 @@
 local M = {}
 
 function M.setup(conf)
+    vim.print(conf)
     local Config = require('php-easy-nvim.any.config')
     Config.setup(conf)
 

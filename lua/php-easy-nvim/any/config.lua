@@ -1,6 +1,7 @@
 local M = {}
 
 M.regex = {}
+M.onAppend = {}
 
 local function getOrDefault(conf, key, default)
     local value = vim.tbl_get(conf, key)
@@ -49,6 +50,9 @@ end
 
 function M.setup(conf)
     M.regex = buildRegex(getOrDefault(conf, 'regex', {}))
+
+    M.onAppend = vim.tbl_extend('force', {putTemplate = true}, conf.onAppend or {})
+    vim.print(M.onAppend)
 end
 
 return M
