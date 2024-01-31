@@ -49,6 +49,17 @@ end
 
 function M.setup(conf)
     M.regex = buildRegex(getOrDefault(conf, 'regex', {}))
+
+    local onSave = vim.tbl_extend('force', conf.onSave or {}, {removeUnusedUses = true})
+    if onSave.removeUnusedUses == true then
+        vim.api.nvim_create_autocmd('BufWritePre', {
+            pattern = {'*.php'},
+            callback = function()
+                local formatter = require('php-easy-nvim.any.formatter')
+                formatter.removeUnusedUses()
+            end
+        })
+    end
 end
 
 return M
