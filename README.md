@@ -37,18 +37,46 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
 | `-r`           | `PHPEasyReplica`           | **R**eplica *any*: Copy under cursor, paste after current and trigger rename function |
 | `-d`           | `PHPEasyDelete`            | **D**elete *any* under cursor |
 | `-b`           | `PHPEasyDocBlock`          | PhpDoc**B**lock for *any* or class or variable |
-| **Append**     |                                                | |
+| **Append**     | | |
 | `-c`           | `PHPEasyAppendConstruct`   | Append **c**onstruct |
 | `-ac`          | `PHPEasyAppendConstant`    | **A**ppend **c**constant |
 | `-ap`          | `PHPEasyAppendProperty`    | **A**ppend **p**roperty |
 | `-am`          | `PHPEasyAppendMethod`      | **A**ppend **m**ethod |
 | `-aa`          | `PHPEasyAppendArgument`    | **A**ppend new **a**rgument in current function |
-| **Objects**    |||
+| **Objects**    | | |
 | `-ic`          | `PHPEasyInitClass`         | **I**nitialize **c**lass in current file |
 | `-iac`         | `PHPEasyInitAbstractClass` | **I**nitialize **a**bstract **c**lass in current file |
 | `-ii`          | `PHPEasyInitInterface`     | **I**nitialize **i**nterface in current file |
 | `-it`          | `PHPEasyInitTrait`         | **I**nitialize **t**rait in current file |
 | `-ie`          | `PHPEasyInitEnum`          | **I**nitialize **e**num in current file |
+
+## Configuration
+
+```lua
+{
+    regex = { -- regex for parse php file
+        tab = '    ',
+        startTab = '^' .. tab,
+        visibility = startTab .. '\\(public\\|protected\\|private\\|\\)\\s\\{1}',
+        static = '\\(static\\s\\|\\)',
+        constant = visibility .. 'const ',
+        property = visibility .. static .. '\\(?*\\w\\+\\s\\|\\)\\$',
+        method = visibility .. static .. 'function',
+        construct = method .. ' __construct(',
+        methodEnd = startTab .. '}',
+        comment = startTab .. '\\/',
+        commentMiddle = startTab .. '\\*',
+        commentEnd = startTab .. '\\s\\*',
+        any = startTab .. '[p}]\\{1}',
+        variable = '\\(' .. tab .. '\\)\\+\\$\\w\\+\\s\\{1}=\\s\\{1}',
+        object = '^\\(final class\\|abstract class\\|class\\|interface\\|trait\\|enum\\)\\s\\{1}',
+    },
+    onSave = { -- on save php file action
+        removeUnusedUses = true -- remove unused uses (then use lsp: intelephense)
+    }
+}
+
+```
 
 ## Examples
 
