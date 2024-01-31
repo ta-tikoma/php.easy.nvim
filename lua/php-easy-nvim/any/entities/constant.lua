@@ -50,10 +50,17 @@ function M.append()
         vim.cmd([[normal! o]])
     end
 
-    vim.cmd([[
-        normal! oprivate const ;
-        startinsert
-    ]])
+    if Config.onAppend.putTemplate then
+        vim.cmd([[
+            normal! oprivate const ;
+            startinsert
+        ]])
+    else
+        vim.cmd([[
+            normal! o
+            startinsert
+        ]])
+    end
 end
 
 return M

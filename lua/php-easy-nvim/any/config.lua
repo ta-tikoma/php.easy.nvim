@@ -1,6 +1,7 @@
 local M = {}
 
 M.regex = {}
+M.onAppend = {}
 
 local function getOrDefault(conf, key, default)
     local value = vim.tbl_get(conf, key)
@@ -50,7 +51,7 @@ end
 function M.setup(conf)
     M.regex = buildRegex(getOrDefault(conf, 'regex', {}))
 
-    local onSave = vim.tbl_extend('force', conf.onSave or {}, {removeUnusedUses = true})
+    local onSave = vim.tbl_extend('force', {removeUnusedUses = true}, conf.onSave or {})
     if onSave.removeUnusedUses == true then
         vim.api.nvim_create_autocmd('BufWritePre', {
             pattern = {'*.php'},
@@ -60,6 +61,9 @@ function M.setup(conf)
             end
         })
     end
+
+    M.onAppend = vim.tbl_extend('force', {putTemplate = true}, conf.onAppend or {})
+    vim.print(M.onAppend)
 end
 
 return M
