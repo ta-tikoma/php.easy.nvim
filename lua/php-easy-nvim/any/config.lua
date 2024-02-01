@@ -52,7 +52,7 @@ function M.setup(conf)
     M.regex = buildRegex(getOrDefault(conf, 'regex', {}))
 
     local onSave = {removeUnusedUses = true} 
-    local onSave = vim.tbl_extend('force', onSave, conf.onSave or onSave)
+    onSave = vim.tbl_extend('force', onSave, conf.onSave or onSave)
     if onSave.removeUnusedUses == true then
         vim.api.nvim_create_autocmd('BufWritePre', {
             pattern = {'*.php'},
