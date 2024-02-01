@@ -1,6 +1,7 @@
 local M = {}
 
 M.regex = {}
+M.onAppend = {}
 
 local function getOrDefault(conf, key, default)
     local value = vim.tbl_get(conf, key)
@@ -60,6 +61,13 @@ function M.setup(conf)
             end
         })
     end
+
+    M.onAppend = {putTemplate = {
+        constant = 'private const ;',
+        method = 'private function \n' .. M.regex.tab .. '{\n' .. M.regex.tab .. '\n' .. M.regex.tab .. '}',
+        property = 'private $;'
+    }}
+    M.onAppend = vim.tbl_extend('force', M.onAppend, conf.onAppend or M.onAppend)
 end
 
 return M

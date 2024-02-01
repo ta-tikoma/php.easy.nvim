@@ -73,6 +73,13 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
     },
     onSave = { -- on save php file action
         removeUnusedUses = true -- remove unused uses (then use lsp: intelephense)
+    },
+    onAppend = { -- on append entity
+        putTemplate = {  -- put template
+            constant = 'private const ;',
+            method = 'private function \n' .. tab .. '{\n' .. tab .. '\n' .. tab .. '}',
+            property = 'private $;'
+        }
     }
 }
 

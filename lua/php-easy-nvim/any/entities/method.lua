@@ -105,8 +105,7 @@ function M.append()
         ]])
     end
 
-    vim.fn.setreg('p', Config.regex.tab .. 'private function \n' .. Config.regex.tab .. '{\n' .. Config.regex.tab .. '\n' .. Config.regex.tab .. '}')
-
+    vim.fn.setreg('p', Config.regex.tab .. Config.onAppend.putTemplate.method)
     vim.cmd([[
         normal "pP
         startinsert!
