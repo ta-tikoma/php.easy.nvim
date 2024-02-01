@@ -6,8 +6,6 @@ local M = {}
 function M.insert()
     local close = vim.fn.search(')')
     local open = vim.fn.match(vim.fn.getline('.'), '(')
-    print(close)
-    print(open)
     if open ~= -1 then -- one line
         vim.cmd([[startinsert]])
     else -- multiline
