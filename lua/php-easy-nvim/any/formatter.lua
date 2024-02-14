@@ -21,7 +21,7 @@ function M.removeUnusedUses()
 
     -- remove
     for key, line in pairs(lines) do
-        if row <= line then
+        if row >= line then
             row = row - 1
         end
         vim.cmd(':' .. (line + 1) .. 'd')
