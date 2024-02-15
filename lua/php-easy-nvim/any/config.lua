@@ -63,11 +63,9 @@ function M.setup(conf)
         })
     end
 
-    M.onAppend = {putTemplate = {
-        constant = 'private const ;',
-        method = 'private function \n' .. M.regex.tab .. '{\n' .. M.regex.tab .. '\n' .. M.regex.tab .. '}',
-        property = 'private $;'
-    }}
+    M.onAppend = {
+        engine = 'default',
+    }
     M.onAppend = vim.tbl_extend('force', M.onAppend, conf.onAppend or M.onAppend)
 end
 

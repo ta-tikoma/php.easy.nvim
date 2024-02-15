@@ -19,11 +19,11 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
             {'-iac', '<CMD>PHPEasyInitAbstractClass<CR>'},
             {'-it', '<CMD>PHPEasyInitTrait<CR>'},
             {'-ie', '<CMD>PHPEasyInitEnum<CR>'},
-            {'-ic', '<CMD>PHPEasyAppendConstruct<CR>'},
-            {'-ac', '<CMD>PHPEasyAppendConstant<CR>'},
-            {'-ap', '<CMD>PHPEasyAppendProperty<CR>'},
-            {'-am', '<CMD>PHPEasyAppendMethod<CR>'},
-            {'-aa', '<CMD>PHPEasyAppendArgument<CR>'},
+            {'-c', '<CMD>PHPEasyAppendConstant<CR>', mode = {'n', 'v'}},
+            {'-p', '<CMD>PHPEasyAppendProperty<CR>', mode = {'n', 'v'}},
+            {'-m', '<CMD>PHPEasyAppendMethod<CR>', mode = {'n', 'v'}},
+            {'-_', '<CMD>PHPEasyAppendConstruct<CR>'},
+            {'-a', '<CMD>PHPEasyAppendArgument<CR>'},
         }
     },
 ```
@@ -39,10 +39,10 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
 | `-b`           | `PHPEasyDocBlock`          | PhpDoc**B**lock for *any* or class or variable |
 | **Append**     | | |
 | `-c`           | `PHPEasyAppendConstruct`   | Append **c**onstruct |
-| `-ac`          | `PHPEasyAppendConstant`    | **A**ppend **c**constant |
-| `-ap`          | `PHPEasyAppendProperty`    | **A**ppend **p**roperty |
-| `-am`          | `PHPEasyAppendMethod`      | **A**ppend **m**ethod |
-| `-aa`          | `PHPEasyAppendArgument`    | **A**ppend new **a**rgument in current function |
+| `-p`           | `PHPEasyAppendProperty`    | Append **p**roperty |
+| `-m`           | `PHPEasyAppendMethod`      | Append **m**ethod |
+| `-_`           | `PHPEasyAppendConstant`    | **A**ppend **c**constant |
+| `-a`           | `PHPEasyAppendArgument`    | **A**ppend new **a**rgument in current function |
 | **Objects**    | | |
 | `-ic`          | `PHPEasyInitClass`         | **I**nitialize **c**lass in current file |
 | `-iac`         | `PHPEasyInitAbstractClass` | **I**nitialize **a**bstract **c**lass in current file |
@@ -75,11 +75,7 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
         removeUnusedUses = true -- remove unused uses (then use lsp: intelephense)
     },
     onAppend = { -- on append entity
-        putTemplate = {  -- put template
-            constant = 'private const ;',
-            method = 'private function \n' .. tab .. '{\n' .. tab .. '\n' .. tab .. '}',
-            property = 'private $;'
-        }
+        engine = 'defalut' -- how to insert template. 'default' - just string, 'LuaSinp' - via 'L3MON4D3/LuaSnip'
     }
 }
 

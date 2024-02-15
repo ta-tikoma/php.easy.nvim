@@ -41,15 +41,50 @@ function M.delete()
 end
 
 function M.append()
+    local selected = Helper.getFirstSelectedText()
+
     vim.cmd([[normal G]])
     if vim.fn.search(Config.regex.property, 'b') == 0 then
         vim.fn.search('^{')
     else
         vim.cmd([[normal! o]])
     end
+ 
+    if Config.onAppend.engine == 'default' then
+        if selected == nil then
+            vim.cmd('normal! oprivate $;')
+        else
+            vim.cmd('normal! oprivate $' .. selected .. ';')
+        end
 
-    vim.cmd('normal! o' .. Config.onAppend.putTemplate.property)
-    vim.cmd([[ startinsert ]])
+        vim.cmd([[ startinsert ]])
+    elseif Config.onAppend.engine == 'LuaSnip' then
+        vim.cmd('normal! o')
+
+        local ls = require("luasnip")
+        local s = ls.snippet
+        local t = ls.text_node
+        local i = ls.insert_node
+        local c = ls.choice_node
+
+        if selected == nil then
+            ls.snip_expand(s('property', {
+                t('\t'), c(1, {
+                    t('private'), 
+                    t('protected'),
+                    t('public')
+                }), t(' '), i(2), t('$'), i(3), i(4, ' = '), i(5), t(';')
+            }))
+        else
+            ls.snip_expand(s('property', {
+                t('\t'), c(1, {
+                    t('private'), 
+                    t('protected'),
+                    t('public')
+                }), t(' '),  i(2), t('$' .. selected), i(3, ' = '), i(4), t(';')
+            }))
+        end
+    end
 end
 
 return M
