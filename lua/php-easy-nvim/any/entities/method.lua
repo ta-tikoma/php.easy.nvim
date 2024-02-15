@@ -74,21 +74,38 @@ function M.construct()
             end
         end
 
-        -- add constant
-        vim.cmd([[
-            normal! Opublic function __construct()
-            normal! o{
-            normal! o}
-        ]])
+        -- add construct
+        if Config.onAppend.engine == 'default' then
+            vim.cmd([[
+                normal! Opublic function __construct()
+                normal! o{
+                normal! o}
+            ]])
+            vim.fn.search('public function __construct(', 'ew')
 
-        vim.fn.search('public function __construct(', 'ew')
+            local argument = require('php-easy-nvim.any.entities.argument')
+            argument.insert()
+        elseif Config.onAppend.engine == 'LuaSnip' then
+            local ls = require("luasnip")
+            local s = ls.snippet
+            local t = ls.text_node
+            local i = ls.insert_node
+            ls.snip_expand(s('construct', {
+                t("\tpublic function __construct("), i(1), t(')'),
+                t({'', "\t{", "\t\t"}),
+                i(2),
+                t({'', "\t}", ''})
+            }))
+        end
+    else
+        local argument = require('php-easy-nvim.any.entities.argument')
+        argument.insert()
     end
-
-    local argument = require('php-easy-nvim.any.entities.argument')
-    argument.insert()
 end
 
 function M.append()
+    local selected = Helper.getFirstSelectedText()
+
     vim.cmd([[normal G]])
     if vim.fn.search(Config.regex.methodEnd, 'b') == 0 then
         vim.fn.search('^}')
@@ -105,11 +122,48 @@ function M.append()
         ]])
     end
 
-    vim.fn.setreg('p', Config.regex.tab .. Config.onAppend.putTemplate.method)
-    vim.cmd([[
-        normal "pP
-        startinsert!
-    ]])
+    if Config.onAppend.engine == 'default' then
+        if selected == nil then
+            vim.fn.setreg('p', Config.regex.tab .. 'private function \n' .. Config.regex.tab .. '{\n' .. Config.regex.tab .. '\n' .. Config.regex.tab .. '}')
+        else
+            vim.fn.setreg('p', Config.regex.tab .. 'private function ' .. selected .. '\n' .. Config.regex.tab .. '{\n' .. Config.regex.tab .. '\n' .. Config.regex.tab .. '}')
+        end
+
+        vim.cmd([[
+            normal "pP
+            startinsert!
+        ]])
+    elseif Config.onAppend.engine == 'LuaSnip' then
+        local ls = require("luasnip")
+        local s = ls.snippet
+        local t = ls.text_node
+        local i = ls.insert_node
+        local c = ls.choice_node
+
+        if selected == nil then
+            ls.snip_expand(s('function', {
+                t('\t'), c(1, {
+                    t('public'), 
+                    t('protected'),
+                    t('private')
+                }), t(' function '), i(2), t('('), i(3), t('): '), i(4, 'void'),
+                t({'', '\t{', '\t\t'}),
+                i(5),
+                t({'', '\t}', ''})
+            }))
+        else
+            ls.snip_expand(s('function', {
+                t('\t'), c(1, {
+                    t('private'), 
+                    t('protected'),
+                    t('public')
+                }), t(' function ' .. selected .. '('), i(2), t('): '), i(3, 'void'),
+                t({'', '\t{', '\t\t'}),
+                i(4),
+                t({'', '\t}', ''})
+            }))
+        end
+    end
 end
 
 return M

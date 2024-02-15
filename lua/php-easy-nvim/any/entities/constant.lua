@@ -20,7 +20,7 @@ end
 function M.replica()
     M.copy()
 
-    vin.fn.search(Config.regex.constant, 'e')
+    vim.fn.search(Config.regex.constant, 'e')
     vim.cmd([[
         normal! o
         normal! pzz
@@ -43,15 +43,52 @@ function M.delete()
 end
 
 function M.append()
+    local selected = Helper.getFirstSelectedText()
+
     vim.cmd([[normal G]])
     if vim.fn.search(Config.regex.constant, 'b') == 0 then
-        vin.fn.search('^{')
+        vim.fn.search('^{')
     else
         vim.cmd([[normal! o]])
     end
 
-    vim.cmd('normal! o' .. Config.onAppend.putTemplate.constant)
-    vim.cmd([[ startinsert ]])
+    if Config.onAppend.engine == 'default' then
+        if selected == nil then
+            vim.cmd('normal! oprivate const ;')
+        else
+            vim.cmd('normal! oprivate const ' .. selected .. '= ;')
+        end
+
+        vim.cmd([[startinsert]])
+    elseif Config.onAppend.engine == 'LuaSnip' then
+        vim.cmd('normal! o')
+
+        local ls = require("luasnip")
+        local s = ls.snippet
+        local t = ls.text_node
+        local i = ls.insert_node
+        local c = ls.choice_node
+
+        if selected == nil then
+            ls.snip_expand(s('constant', {
+                t('\t'), c(1, {
+                    t('private'), 
+                    t('protected'),
+                    t('public')
+                }),
+                t(' const '),  i(2), t(' = ') , i(3), t(';')
+            }))
+        else
+            ls.snip_expand(s('constant', {
+                t('\t'), c(1, {
+                    t('private'), 
+                    t('protected'),
+                    t('public')
+                }),
+                t(' const ' .. selected .. ' = ') , i(2), t(';')
+            }))
+        end
+    end
 end
 
 return M
