@@ -38,11 +38,11 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
 | `-d`           | `PHPEasyDelete`            | **D**elete *any* under cursor |
 | `-b`           | `PHPEasyDocBlock`          | PhpDoc**B**lock for *any* or class or variable |
 | **Append**     | | |
-| `-c`           | `PHPEasyAppendConstruct`   | Append **c**onstruct |
+| `-c`           | `PHPEasyAppendConstant`    | Append **c**onstant |
 | `-p`           | `PHPEasyAppendProperty`    | Append **p**roperty |
 | `-m`           | `PHPEasyAppendMethod`      | Append **m**ethod |
-| `-_`           | `PHPEasyAppendConstant`    | **A**ppend **c**constant |
-| `-a`           | `PHPEasyAppendArgument`    | **A**ppend new **a**rgument in current function |
+| `-_`           | `PHPEasyAppendConstruct`   | Append **_**_construct |
+| `-a`           | `PHPEasyAppendArgument`    | Append new **a**rgument in current function |
 | **Objects**    | | |
 | `-ic`          | `PHPEasyInitClass`         | **I**nitialize **c**lass in current file |
 | `-iac`         | `PHPEasyInitAbstractClass` | **I**nitialize **a**bstract **c**lass in current file |
