@@ -10,6 +10,7 @@ function M.setup(conf)
     local argument = require('php-easy-nvim.any.entities.argument')
     local constant = require('php-easy-nvim.any.entities.constant')
     local property = require('php-easy-nvim.any.entities.property')
+    local formatter = require('php-easy-nvim.any.formatter')
 
     vim.api.nvim_create_user_command('PHPEasyDocBlock', function() orchestrator.docBlock() end, {})
     vim.api.nvim_create_user_command('PHPEasyReplica', function() orchestrator.replica() end, {})
@@ -21,6 +22,8 @@ function M.setup(conf)
     vim.api.nvim_create_user_command('PHPEasyInitAbstractClass', function() object.initAbstractClass() end, {})
     vim.api.nvim_create_user_command('PHPEasyInitTrait', function() object.initTrait() end, {})
     vim.api.nvim_create_user_command('PHPEasyInitEnum', function() object.initEnum() end, {})
+    vim.api.nvim_create_user_command('PHPEasyRemoveUnusedUses', function() formatter.removeUnusedUses() end, {})
+    vim.api.nvim_create_user_command('PHPEasyImplements', function() object.implements() end, {})
 
     vim.api.nvim_create_user_command('PHPEasyAppendConstruct', function() method.construct() end, {})
 

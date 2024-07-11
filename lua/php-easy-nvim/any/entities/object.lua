@@ -88,4 +88,20 @@ function M.initEnum()
     initObject('enum')
 end
 
+function M.implements()
+    vim.fn.search(Config.regex.object, 'we')
+    vim.cmd([[
+        normal! A implements 
+        startinsert!
+    ]])
+end
+
+function M.extends()
+    vim.fn.search(Config.regex.object, 'we')
+    vim.cmd([[
+        normal! A extends 
+        startinsert!
+    ]])
+end
+
 return M

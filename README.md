@@ -14,6 +14,9 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
             {'-r', '<CMD>PHPEasyReplica<CR>'},
             {'-c', '<CMD>PHPEasyCopy<CR>'},
             {'-d', '<CMD>PHPEasyDelete<CR>'},
+            {'-uu', '<CMD>PHPEasyRemoveUnusedUses<CR>'},
+            {'-e', '<CMD>PHPEasyExtends<CR>'},
+            {'-i', '<CMD>PHPEasyImplements<CR>'},
             {'-ii', '<CMD>PHPEasyInitInterface<CR>'},
             {'-ic', '<CMD>PHPEasyInitClass<CR>'},
             {'-iac', '<CMD>PHPEasyInitAbstractClass<CR>'},
@@ -44,6 +47,9 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
 | `-_`           | `PHPEasyAppendConstruct`   | Append **_**_construct |
 | `-a`           | `PHPEasyAppendArgument`    | Append new **a**rgument in current function |
 | **Objects**    | | |
+| `-uu`          | `PHPEasyRemoveUnusedUses` | Remove **u**nused **u**ses from current class |
+| `-e`           | `PHPEasyExtends`           | **E**xtends current class |
+| `-i`           | `PHPEasyImplements`        | **I**mplements current class |
 | `-ic`          | `PHPEasyInitClass`         | **I**nitialize **c**lass in current file |
 | `-iac`         | `PHPEasyInitAbstractClass` | **I**nitialize **a**bstract **c**lass in current file |
 | `-ii`          | `PHPEasyInitInterface`     | **I**nitialize **i**nterface in current file |
