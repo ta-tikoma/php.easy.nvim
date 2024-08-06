@@ -24,6 +24,7 @@ function M.setup(conf)
     vim.api.nvim_create_user_command('PHPEasyInitEnum', function() object.initEnum() end, {})
     vim.api.nvim_create_user_command('PHPEasyRemoveUnusedUses', function() formatter.removeUnusedUses() end, {})
     vim.api.nvim_create_user_command('PHPEasyImplements', function() object.implements() end, {})
+    vim.api.nvim_create_user_command('PHPEasyExtends', function() object.extends() end, {})
 
     vim.api.nvim_create_user_command('PHPEasyAppendConstruct', function() method.construct() end, {})
 

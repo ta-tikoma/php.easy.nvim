@@ -44,6 +44,7 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
 | `-c`           | `PHPEasyAppendConstant`    | Append **c**onstant |
 | `-p`           | `PHPEasyAppendProperty`    | Append **p**roperty |
 | `-m`           | `PHPEasyAppendMethod`      | Append **m**ethod |
+| `-t`           | `PHPEasyAppendTrait`       | Append **t**ait |
 | `-_`           | `PHPEasyAppendConstruct`   | Append **_**_construct |
 | `-a`           | `PHPEasyAppendArgument`    | Append new **a**rgument in current function |
 | **Objects**    | | |
