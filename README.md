@@ -15,13 +15,13 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
             {'-c', '<CMD>PHPEasyCopy<CR>'},
             {'-d', '<CMD>PHPEasyDelete<CR>'},
             {'-uu', '<CMD>PHPEasyRemoveUnusedUses<CR>'},
-            {'-E', '<CMD>PHPEasyExtends<CR>'},
-            {'-I', '<CMD>PHPEasyImplements<CR>'},
-            {'-ii', '<CMD>PHPEasyInitInterface<CR>'},
-            {'-ic', '<CMD>PHPEasyInitClass<CR>'},
-            {'-iac', '<CMD>PHPEasyInitAbstractClass<CR>'},
-            {'-it', '<CMD>PHPEasyInitTrait<CR>'},
-            {'-ie', '<CMD>PHPEasyInitEnum<CR>'},
+            {'-e', '<CMD>PHPEasyExtends<CR>'},
+            {'-i', '<CMD>PHPEasyImplements<CR>'},
+            {'-II', '<CMD>PHPEasyInitInterface<CR>'},
+            {'-IC', '<CMD>PHPEasyInitClass<CR>'},
+            {'-IAC', '<CMD>PHPEasyInitAbstractClass<CR>'},
+            {'-IT', '<CMD>PHPEasyInitTrait<CR>'},
+            {'-IE', '<CMD>PHPEasyInitEnum<CR>'},
             {'-c', '<CMD>PHPEasyAppendConstant<CR>', mode = {'n', 'v'}},
             {'-p', '<CMD>PHPEasyAppendProperty<CR>', mode = {'n', 'v'}},
             {'-m', '<CMD>PHPEasyAppendMethod<CR>', mode = {'n', 'v'}},
@@ -51,13 +51,13 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
 | `-a`           | `PHPEasyAppendArgument`    | Append new **a**rgument in current function |
 | **Objects**    | | |
 | `-uu`          | `PHPEasyRemoveUnusedUses` | Remove **u**nused **u**ses from current class |
-| `-E`           | `PHPEasyExtends`           | **E**xtends current class |
-| `-I`           | `PHPEasyImplements`        | **I**mplements current class |
-| `-ic`          | `PHPEasyInitClass`         | **I**nitialize **c**lass in current file |
-| `-iac`         | `PHPEasyInitAbstractClass` | **I**nitialize **a**bstract **c**lass in current file |
-| `-ii`          | `PHPEasyInitInterface`     | **I**nitialize **i**nterface in current file |
-| `-it`          | `PHPEasyInitTrait`         | **I**nitialize **t**rait in current file |
-| `-ie`          | `PHPEasyInitEnum`          | **I**nitialize **e**num in current file |
+| `-e`           | `PHPEasyExtends`           | **E**xtends current class |
+| `-i`           | `PHPEasyImplements`        | **I**mplements current class |
+| `-IC`          | `PHPEasyInitClass`         | **I**nitialize **c**lass in current file |
+| `-IAC`         | `PHPEasyInitAbstractClass` | **I**nitialize **a**bstract **c**lass in current file |
+| `-II`          | `PHPEasyInitInterface`     | **I**nitialize **i**nterface in current file |
+| `-IT`          | `PHPEasyInitTrait`         | **I**nitialize **t**rait in current file |
+| `-IE`          | `PHPEasyInitEnum`          | **I**nitialize **e**num in current file |
 
 ## Configuration
 
