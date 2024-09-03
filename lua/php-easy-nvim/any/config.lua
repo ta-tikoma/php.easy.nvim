@@ -21,6 +21,7 @@ local function buildRegex(conf)
     local property = getOrDefault(conf, 'property', visibility .. static .. '\\(?*\\w\\+\\s\\|\\)\\$')
     local method = getOrDefault(conf, 'method', visibility .. static .. 'function')
     local construct = getOrDefault(conf, 'construct', method .. ' __construct(')
+    local invoke = getOrDefault(conf, 'invoke', method .. ' __invoke(')
     local methodEnd = getOrDefault(conf, 'methodEnd', startTab .. '}')
     local comment = getOrDefault(conf, 'comment', startTab .. '\\/')
     local commentMiddle = getOrDefault(conf, 'commentMiddle', startTab .. '\\*')
@@ -38,6 +39,7 @@ local function buildRegex(conf)
          property = property,
          method = method,
          construct = construct,
+         invoke = invoke,
          methodEnd = methodEnd,
          comment = comment,
          commentMiddle = commentMiddle,

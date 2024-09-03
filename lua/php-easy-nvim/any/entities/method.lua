@@ -103,6 +103,52 @@ function M.construct()
     end
 end
 
+function M.invoke()
+    vim.cmd([[normal! gg]])
+
+    -- check exists invoke
+    if vim.fn.search(Config.regex.invoke, 'ew') == 0 then
+        -- check exists eny method
+        if vim.fn.search(Config.regex.method) == 0 then
+            vim.cmd([[normal G]])
+        else
+            vim.cmd([[normal! k]])
+            if Helper.currentLineMatch(Config.regex.commentEnd) then
+                vim.fn.search(Config.regex.comment, 'b')
+            else
+                vim.cmd([[normal! j]])
+            end
+        end
+
+        -- add invoke
+        if Config.onAppend.engine == 'default' then
+            vim.cmd([[
+                normal! Opublic function __invoke()
+                normal! o{
+                normal! o}
+            ]])
+            vim.fn.search('public function __invoke(', 'ew')
+
+            local argument = require('php-easy-nvim.any.entities.argument')
+            argument.insert()
+        elseif Config.onAppend.engine == 'LuaSnip' then
+            local ls = require("luasnip")
+            local s = ls.snippet
+            local t = ls.text_node
+            local i = ls.insert_node
+            ls.snip_expand(s('invoke', {
+                t("\tpublic function __invoke("), i(1), t(')'),
+                t({'', "\t{", "\t\t"}),
+                i(2),
+                t({'', "\t}", ''})
+            }))
+        end
+    else
+        local argument = require('php-easy-nvim.any.entities.argument')
+        argument.insert()
+    end
+end
+
 function M.append()
     local selected = Helper.getFirstSelectedText()
 

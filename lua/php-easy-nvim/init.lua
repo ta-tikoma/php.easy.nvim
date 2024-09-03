@@ -27,6 +27,7 @@ function M.setup(conf)
     vim.api.nvim_create_user_command('PHPEasyExtends', function() object.extends() end, {})
 
     vim.api.nvim_create_user_command('PHPEasyAppendConstruct', function() method.construct() end, {})
+    vim.api.nvim_create_user_command('PHPEasyAppendInvoke', function() method.invoke() end, {})
 
     vim.api.nvim_create_user_command('PHPEasyAppendConstant', function() constant.append() end, {})
     vim.api.nvim_create_user_command('PHPEasyAppendProperty', function() property.append() end, {})
