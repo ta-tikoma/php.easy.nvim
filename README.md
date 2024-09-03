@@ -32,6 +32,24 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
     },
 ```
 
+#### If you want to use better append engine
+```lua
+    {
+        'ta-tikoma/php.easy.nvim',
+        dependencies = {
+            'L3MON4D3/LuaSnip',
+        },
+        opts = {
+            onAppend = {
+                engine = 'LuaSnip'
+            }
+        },
+        keys = {
+            ...
+        }
+    },
+```
+
 ## Features
 
 | Example Key Binding | Function  | Description |
@@ -50,7 +68,7 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
 | `-_i`          | `PHPEasyAppendInvoke`      | Append _**_i**nvoke |
 | `-a`           | `PHPEasyAppendArgument`    | Append new **a**rgument in current function |
 | **Objects**    | | |
-| `-uu`          | `PHPEasyRemoveUnusedUses` | Remove **u**nused **u**ses from current class |
+| `-uu`          | `PHPEasyRemoveUnusedUses`  | Remove **u**nused **u**ses from current file, if you use lsp: [intelephense](https://intelephense.com/) |
 | `-e`           | `PHPEasyExtends`           | **E**xtends current class |
 | `-i`           | `PHPEasyImplements`        | **I**mplements current class |
 | `-IC`          | `PHPEasyInitClass`         | **I**nitialize **c**lass in current file |
