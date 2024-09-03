@@ -94,16 +94,16 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
 
 ### Init
 
-#### Init trait `-it`
+#### Init trait `-IT`
 ![init trait](https://raw.githubusercontent.com/ta-tikoma/php.easy.vim/with-examples/example/init/trait.gif)
 
-#### Init interface `-ii`
+#### Init interface `-II`
 ![init interface](https://raw.githubusercontent.com/ta-tikoma/php.easy.vim/with-examples/example/init/interface.gif)
 
-#### Init abstract class `-iac`
+#### Init abstract class `-IAC`
 ![init abstract class](https://raw.githubusercontent.com/ta-tikoma/php.easy.vim/with-examples/example/init/abstract-class.gif)
 
-#### Init class `-ic`
+#### Init class `-IC`
 ![init class](https://raw.githubusercontent.com/ta-tikoma/php.easy.vim/with-examples/example/init/class.gif)
 
 ### Add doc block `-b`
