@@ -17,8 +17,9 @@ local function buildRegex(conf)
     local startTab = getOrDefault(conf, 'startTab', '^' .. tab)
     local visibility = getOrDefault(conf, 'visibility', startTab .. '\\(public\\|protected\\|private\\|\\)\\s\\{1}')
     local static = getOrDefault(conf, 'static', '\\(static\\s\\|\\)')
+    local readonly = getOrDefault(conf, 'readonly', '\\(readonly\\s\\|\\)')
     local constant = getOrDefault(conf, 'constant', visibility .. 'const ')
-    local property = getOrDefault(conf, 'property', visibility .. static .. '\\(?*\\w\\+\\s\\|\\)\\$')
+    local property = getOrDefault(conf, 'property', visibility .. static .. readonly .. '\\(?*\\w\\+\\s\\|\\)\\$')
     local method = getOrDefault(conf, 'method', visibility .. static .. 'function')
     local construct = getOrDefault(conf, 'construct', method .. ' __construct(')
     local invoke = getOrDefault(conf, 'invoke', method .. ' __invoke(')
@@ -35,6 +36,7 @@ local function buildRegex(conf)
          startTab = startTab,
          visibility = visibility,
          static = static,
+         readonly = readonly,
          constant = constant,
          property = property,
          method = method,
