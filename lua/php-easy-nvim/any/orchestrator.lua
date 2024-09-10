@@ -57,6 +57,16 @@ function M.itIs(options)
     return result.type
 end
 
+function M.attribute()
+    local entity = M.itIs({
+        Type.METHOD,
+        Type.PROPERTY,
+        Type.OBJECT
+    })
+
+    M.entities[entity].attribute(M.entities)
+end
+
 function M.docBlock()
     local entity = M.itIs({
         Type.METHOD,

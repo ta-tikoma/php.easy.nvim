@@ -30,6 +30,14 @@ function M.docBlock()
     end
 end
 
+function M.attribute()
+    vim.fn.setreg('p', Config.regex.tab .. '#[]\n')
+    vim.cmd([[
+        normal "pP^ll
+        startinsert
+    ]])
+end
+
 function M.copy()
     SelectProperty()
     vim.cmd([[normal! y]])

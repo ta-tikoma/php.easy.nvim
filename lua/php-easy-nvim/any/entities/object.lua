@@ -10,6 +10,15 @@ function M.docBlock()
     ]])
 end
 
+function M.attribute()
+    vim.fn.setreg('p', '#[]')
+    vim.cmd([[
+        normal! O
+        normal! "pP^ll
+        startinsert
+    ]])
+end
+
 local function initObject(type)
     -- prepare name and path
     local file = vim.fn.expand('%:t:r')

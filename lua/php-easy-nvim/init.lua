@@ -12,6 +12,7 @@ function M.setup(conf)
     local property = require('php-easy-nvim.any.entities.property')
     local formatter = require('php-easy-nvim.any.formatter')
 
+    vim.api.nvim_create_user_command('PHPEasyAttribute', function() orchestrator.attribute() end, {})
     vim.api.nvim_create_user_command('PHPEasyDocBlock', function() orchestrator.docBlock() end, {})
     vim.api.nvim_create_user_command('PHPEasyReplica', function() orchestrator.replica() end, {})
     vim.api.nvim_create_user_command('PHPEasyCopy', function() orchestrator.copy() end, {})

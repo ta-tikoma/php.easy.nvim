@@ -10,24 +10,25 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
         'ta-tikoma/php.easy.nvim',
         config = true,
         keys = {
-            {'-b', '<CMD>PHPEasyDocBlock<CR>'},
-            {'-r', '<CMD>PHPEasyReplica<CR>'},
-            {'-c', '<CMD>PHPEasyCopy<CR>'},
-            {'-d', '<CMD>PHPEasyDelete<CR>'},
-            {'-uu', '<CMD>PHPEasyRemoveUnusedUses<CR>'},
-            {'-e', '<CMD>PHPEasyExtends<CR>'},
-            {'-i', '<CMD>PHPEasyImplements<CR>'},
-            {'-II', '<CMD>PHPEasyInitInterface<CR>'},
-            {'-IC', '<CMD>PHPEasyInitClass<CR>'},
-            {'-IAC', '<CMD>PHPEasyInitAbstractClass<CR>'},
-            {'-IT', '<CMD>PHPEasyInitTrait<CR>'},
-            {'-IE', '<CMD>PHPEasyInitEnum<CR>'},
-            {'-c', '<CMD>PHPEasyAppendConstant<CR>', mode = {'n', 'v'}},
-            {'-p', '<CMD>PHPEasyAppendProperty<CR>', mode = {'n', 'v'}},
-            {'-m', '<CMD>PHPEasyAppendMethod<CR>', mode = {'n', 'v'}},
-            {'-__', '<CMD>PHPEasyAppendConstruct<CR>'},
-            {'-_i', '<CMD>PHPEasyAppendInvoke<CR>'},
-            {'-a', '<CMD>PHPEasyAppendArgument<CR>'},
+            {'-#', '<CMD>PHPEasyAttribute<CR>', ft = 'php'},
+            {'-b', '<CMD>PHPEasyDocBlock<CR>', ft = 'php'},
+            {'-r', '<CMD>PHPEasyReplica<CR>', ft = 'php'},
+            {'-c', '<CMD>PHPEasyCopy<CR>', ft = 'php'},
+            {'-d', '<CMD>PHPEasyDelete<CR>', ft = 'php'},
+            {'-uu', '<CMD>PHPEasyRemoveUnusedUses<CR>', ft = 'php'},
+            {'-e', '<CMD>PHPEasyExtends<CR>', ft = 'php'},
+            {'-i', '<CMD>PHPEasyImplements<CR>', ft = 'php'},
+            {'--i', '<CMD>PHPEasyInitInterface<CR>', ft = 'php'},
+            {'--c', '<CMD>PHPEasyInitClass<CR>', ft = 'php'},
+            {'--ac', '<CMD>PHPEasyInitAbstractClass<CR>', ft = 'php'},
+            {'--t', '<CMD>PHPEasyInitTrait<CR>', ft = 'php'},
+            {'--e', '<CMD>PHPEasyInitEnum<CR>', ft = 'php'},
+            {'-c', '<CMD>PHPEasyAppendConstant<CR>', ft = 'php', mode = {'n', 'v'}},
+            {'-p', '<CMD>PHPEasyAppendProperty<CR>', ft = 'php', mode = {'n', 'v'}},
+            {'-m', '<CMD>PHPEasyAppendMethod<CR>', ft = 'php', mode = {'n', 'v'}},
+            {'__', '<CMD>PHPEasyAppendConstruct<CR>', ft = 'php'},
+            {'_i', '<CMD>PHPEasyAppendInvoke<CR>', ft = 'php'},
+            {'-a', '<CMD>PHPEasyAppendArgument<CR>', ft = 'php'},
         }
     },
 ```
@@ -59,6 +60,7 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
 | `-r`           | `PHPEasyReplica`           | **R**eplica *any*: Copy under cursor, paste after current and trigger rename function |
 | `-d`           | `PHPEasyDelete`            | **D**elete *any* under cursor |
 | `-b`           | `PHPEasyDocBlock`          | PhpDoc**B**lock for *any* or class or variable |
+| `-#`           | `PHPEasyAttribute`         | Add **\#**\[Attribute\] for *any* or class |
 | **Append**     | | |
 | `-c`           | `PHPEasyAppendConstant`    | Append **c**onstant |
 | `-p`           | `PHPEasyAppendProperty`    | Append **p**roperty |
@@ -71,11 +73,11 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
 | `-uu`          | `PHPEasyRemoveUnusedUses`  | Remove **u**nused **u**ses from current file, if you use lsp: [intelephense](https://intelephense.com/) |
 | `-e`           | `PHPEasyExtends`           | **E**xtends current class |
 | `-i`           | `PHPEasyImplements`        | **I**mplements current class |
-| `-IC`          | `PHPEasyInitClass`         | **I**nitialize **c**lass in current file |
-| `-IAC`         | `PHPEasyInitAbstractClass` | **I**nitialize **a**bstract **c**lass in current file |
-| `-II`          | `PHPEasyInitInterface`     | **I**nitialize **i**nterface in current file |
-| `-IT`          | `PHPEasyInitTrait`         | **I**nitialize **t**rait in current file |
-| `-IE`          | `PHPEasyInitEnum`          | **I**nitialize **e**num in current file |
+| `--c`          | `PHPEasyInitClass`         | **I**nitialize **c**lass in current file |
+| `--ac`         | `PHPEasyInitAbstractClass` | **I**nitialize **a**bstract **c**lass in current file |
+| `--i`          | `PHPEasyInitInterface`     | **I**nitialize **i**nterface in current file |
+| `--t`          | `PHPEasyInitTrait`         | **I**nitialize **t**rait in current file |
+| `--e`          | `PHPEasyInitEnum`          | **I**nitialize **e**num in current file |
 
 ## Configuration
 
@@ -113,16 +115,16 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
 
 ### Init
 
-#### Init trait `-IT`
+#### Init trait `--t`
 ![init trait](https://raw.githubusercontent.com/ta-tikoma/php.easy.vim/with-examples/example/init/trait.gif)
 
-#### Init interface `-II`
+#### Init interface `--i`
 ![init interface](https://raw.githubusercontent.com/ta-tikoma/php.easy.vim/with-examples/example/init/interface.gif)
 
-#### Init abstract class `-IAC`
+#### Init abstract class `--ac`
 ![init abstract class](https://raw.githubusercontent.com/ta-tikoma/php.easy.vim/with-examples/example/init/abstract-class.gif)
 
-#### Init class `-IC`
+#### Init class `--c`
 ![init class](https://raw.githubusercontent.com/ta-tikoma/php.easy.vim/with-examples/example/init/class.gif)
 
 ### Add doc block `-b`
