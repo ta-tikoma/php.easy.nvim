@@ -111,6 +111,69 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
 
 ```
 
+## Quicktest adapter
+
+Example configuration
+
+```lua
+    {
+        'quolpr/quicktest.nvim',
+        config = function()
+            local qt = require("quicktest")
+            local root_patterns = { ".git" }
+            local root_dir = vim.fs.dirname(vim.fs.find(root_patterns, { upward = true })[1])
+            qt.setup({
+                adapters = {
+                    require("php-easy-nvim.quicktest.adapters.phpunit")({
+                        command = root_dir .. "vendor/bin/phpunit",
+                    })
+                },
+                use_baleia = false
+            })
+        end,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+        },
+        keys = {
+            ...
+        }
+    }
+```
+
+If you use docker. Add file phpunit.sh to root directory of project:
+```bash
+#!/bin/bash
+docker exec -i php vendor/bin/phpunit ${@}
+```
+When `chmod +x phpunit.sh`.
+Change configuration:
+```lua
+    {
+        'quolpr/quicktest.nvim',
+        config = function()
+            local qt = require("quicktest")
+            local root_patterns = { ".git", "phpunit.sh" }
+            local root_dir = vim.fs.dirname(vim.fs.find(root_patterns, { upward = true })[1])
+            qt.setup({
+                adapters = {
+                    require("php-easy-nvim.quicktest.adapters.phpunit")({
+                        command = root_dir .. "phpunit.sh",
+                    })
+                },
+                use_baleia = false
+            })
+        end,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+        },
+        keys = {
+            ...
+        }
+    }
+```
+
 ## Examples
 
 ### Init
