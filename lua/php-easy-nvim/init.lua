@@ -11,6 +11,8 @@ function M.setup(conf)
     local constant = require('php-easy-nvim.any.entities.constant')
     local property = require('php-easy-nvim.any.entities.property')
     local formatter = require('php-easy-nvim.any.formatter')
+    local copyist = require('php-easy-nvim.any.copyist')
+    copyist.setup()
 
     vim.api.nvim_create_user_command('PHPEasyAttribute', function() orchestrator.attribute() end, {})
     vim.api.nvim_create_user_command('PHPEasyDocBlock', function() orchestrator.docBlock() end, {})
@@ -34,6 +36,8 @@ function M.setup(conf)
     vim.api.nvim_create_user_command('PHPEasyAppendProperty', function() property.append() end, {})
     vim.api.nvim_create_user_command('PHPEasyAppendMethod', function() method.append() end, {})
     vim.api.nvim_create_user_command('PHPEasyAppendArgument', function() argument.append() end, {})
+
+    vim.api.nvim_create_user_command('PHPEasyPaste', function() copyist.paste() end, {})
 end
 
 return M

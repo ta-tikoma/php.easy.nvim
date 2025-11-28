@@ -29,6 +29,7 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
             {'__', '<CMD>PHPEasyAppendConstruct<CR>', ft = 'php'},
             {'_i', '<CMD>PHPEasyAppendInvoke<CR>', ft = 'php'},
             {'-a', '<CMD>PHPEasyAppendArgument<CR>', ft = 'php'},
+            {'p', '<CMD>PHPEasyPaste<CR>', ft = 'php'},
         }
     },
 ```
@@ -78,6 +79,7 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
 | `--i`          | `PHPEasyInitInterface`     | **I**nitialize **i**nterface in current file |
 | `--t`          | `PHPEasyInitTrait`         | **I**nitialize **t**rait in current file |
 | `--e`          | `PHPEasyInitEnum`          | **I**nitialize **e**num in current file |
+| `p`            | `PHPEasyPaste`          | **P**aste code include uses |
 
 ## Configuration
 
