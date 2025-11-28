@@ -3,7 +3,7 @@ local M = {}
 M.uses = {}
 
 local function extract_name(s)
-    local last_bs = s:match(".*()\\")
+    local last_bs = s:match(".*()[ \\\\]")
     if not last_bs then return nil end
     local semipos = s:find(";", last_bs)
     if not semipos or semipos <= last_bs then return nil end
