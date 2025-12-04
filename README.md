@@ -30,7 +30,7 @@ A few functions for make work with PHP 7.4 (or more) projects easy and quickly.
             {'__', '<CMD>PHPEasyAppendConstruct<CR>', ft = 'php'},
             {'_i', '<CMD>PHPEasyAppendInvoke<CR>', ft = 'php'},
             {'-a', '<CMD>PHPEasyAppendArgument<CR>', ft = 'php'},
-            {'p', '<CMD>PHPEasyPaste<CR>', ft = 'php'},
+            {'p', '<CMD>PHPEasyPaste<CR>', ft = 'php', mode = {'n', 'v'}},
         }
     },
 ```
