@@ -13,7 +13,7 @@ end
 local function find_names(s)
     local res = {}
     for word in s:gmatch("%f[%a][A-Z][A-Za-z0-9]*%f[%A]") do
-        table.insert(res, word)
+        res[word] = word
     end
     return res
 end
@@ -46,20 +46,21 @@ end
 
 function M.paste(command)
     local names = find_names(vim.fn.getreg('"'))
+    temp = M.uses
+    M.uses = {}
 
     command = command or 'normal! p'
     vim.cmd(command)
 
     local uses, last = find_uses()
-    for i, name in ipairs(names) do
+    for _, name in pairs(names) do
+        -- print(vim.inspect(name))
         if uses[name] == nil then
-            if M.uses[name] ~= nil then
-                vim.api.nvim_buf_set_lines(0, last, last, false, { M.uses[name] })
+            if temp[name] ~= nil then
+                vim.api.nvim_buf_set_lines(0, last, last, false, { temp[name] })
             end
         end
     end
-
-    M.uses = {}
 end
 
 return M
